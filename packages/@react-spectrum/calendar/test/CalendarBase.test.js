@@ -543,10 +543,10 @@ describe('CalendarBase', () => {
       let body = getByRole('grid');
       expect(calendar).toHaveAttribute('id');
       expect(calendar).toHaveAttribute('aria-label', 'June 2019');
-      expect(calendar).toHaveAttribute('aria-labelledby', `foo ${calendar.id}`);
+      expect(calendar).toHaveAttribute('aria-labelledby', `${calendar.id} foo`);
       expect(body).toHaveAttribute('aria-label', 'June 2019');
       expect(body).toHaveAttribute('id');
-      expect(body).toHaveAttribute('aria-labelledby', `foo ${body.id}`);
+      expect(body).toHaveAttribute('aria-labelledby', `${body.id} foo`);
     });
 
     it.each`
@@ -559,10 +559,10 @@ describe('CalendarBase', () => {
       let body = getByRole('grid');
       expect(calendar).toHaveAttribute('id');
       expect(calendar).toHaveAttribute('aria-label', 'cal, June 2019');
-      expect(calendar).toHaveAttribute('aria-labelledby', `foo ${calendar.id}`);
+      expect(calendar).toHaveAttribute('aria-labelledby', `${calendar.id} foo`);
       expect(body).toHaveAttribute('aria-label', 'cal, June 2019');
       expect(body).toHaveAttribute('id');
-      expect(body).toHaveAttribute('aria-labelledby', `foo ${body.id}`);
+      expect(body).toHaveAttribute('aria-labelledby', `${body.id} foo`);
     });
 
     it.each`
@@ -575,10 +575,10 @@ describe('CalendarBase', () => {
       let body = getByRole('grid');
       expect(calendar).toHaveAttribute('id', 'hi');
       expect(calendar).toHaveAttribute('aria-label', 'cal, June 2019');
-      expect(calendar).toHaveAttribute('aria-labelledby', `foo ${calendar.id}`);
+      expect(calendar).toHaveAttribute('aria-labelledby', `${calendar.id} foo`);
       expect(body).toHaveAttribute('aria-label', 'cal, June 2019');
       expect(body).toHaveAttribute('id');
-      expect(body).toHaveAttribute('aria-labelledby', `foo ${body.id}`);
+      expect(body).toHaveAttribute('aria-labelledby', `${body.id} foo`);
     });
 
     it.each`

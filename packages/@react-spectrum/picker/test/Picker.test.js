@@ -809,7 +809,7 @@ describe('Picker', function () {
       let value = getByText('Select an option…');
       expect(label).toHaveAttribute('id');
       expect(value).toHaveAttribute('id');
-      expect(picker).toHaveAttribute('aria-labelledby', `${label.id} ${value.id}`);
+      expect(picker).toHaveAttribute('aria-labelledby', `${value.id} ${label.id}`);
 
       triggerPress(picker);
       act(() => jest.runAllTimers());
@@ -835,7 +835,7 @@ describe('Picker', function () {
       expect(picker).toHaveAttribute('id');
       expect(value).toHaveAttribute('id');
       expect(picker).toHaveAttribute('aria-label', 'Test');
-      expect(picker).toHaveAttribute('aria-labelledby', `${picker.id} ${value.id}`);
+      expect(picker).toHaveAttribute('aria-labelledby', `${value.id} ${picker.id}`);
 
       triggerPress(picker);
       act(() => jest.runAllTimers());
@@ -860,7 +860,7 @@ describe('Picker', function () {
       let value = getByText('Select an option…');
       expect(picker).toHaveAttribute('id');
       expect(value).toHaveAttribute('id');
-      expect(picker).toHaveAttribute('aria-labelledby', `foo ${value.id}`);
+      expect(picker).toHaveAttribute('aria-labelledby', `${value.id} foo`);
 
       triggerPress(picker);
       act(() => jest.runAllTimers());
@@ -886,14 +886,14 @@ describe('Picker', function () {
       expect(picker).toHaveAttribute('id');
       expect(value).toHaveAttribute('id');
       expect(picker).toHaveAttribute('aria-label', 'Test');
-      expect(picker).toHaveAttribute('aria-labelledby', `foo ${picker.id} ${value.id}`);
+      expect(picker).toHaveAttribute('aria-labelledby', `${value.id} ${picker.id} foo`);
 
       triggerPress(picker);
       act(() => jest.runAllTimers());
 
       let listbox = getByRole('listbox');
       expect(listbox).toBeVisible();
-      expect(listbox).toHaveAttribute('aria-labelledby', `foo ${picker.id}`);
+      expect(listbox).toHaveAttribute('aria-labelledby', `${picker.id} foo`);
     });
 
     describe('isRequired', function () {
@@ -919,7 +919,7 @@ describe('Picker', function () {
         let value = getByText('Select an option…');
         expect(label).toHaveAttribute('id');
         expect(value).toHaveAttribute('id');
-        expect(picker).toHaveAttribute('aria-labelledby', `${label.id} ${value.id}`);
+        expect(picker).toHaveAttribute('aria-labelledby', `${value.id} ${label.id}`);
 
         triggerPress(picker);
         act(() => jest.runAllTimers());
