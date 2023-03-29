@@ -52,7 +52,6 @@ export function useAccordionItem<T>(props: AccordionItemAriaProps<T>, state: Tre
   }), ref);
   let isExpanded = state.expandedKeys.has(item.key);
 
-
   return {
     buttonProps: {
       ...buttonProps,
