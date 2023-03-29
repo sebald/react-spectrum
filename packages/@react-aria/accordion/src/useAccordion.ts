@@ -51,6 +51,8 @@ export function useAccordionItem<T>(props: AccordionItemAriaProps<T>, state: Tre
     onPress: () => state.toggleKey(item.key)
   }), ref);
   let isExpanded = state.expandedKeys.has(item.key);
+
+
   return {
     buttonProps: {
       ...buttonProps,

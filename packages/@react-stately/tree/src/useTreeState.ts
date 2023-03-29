@@ -53,6 +53,8 @@ export function useTreeState<T extends object>(props: TreeProps<T>): TreeState<T
 
   let tree = useCollection(props, nodes => new TreeCollection(nodes, {expandedKeys}), null, [expandedKeys]);
 
+  let selectionManager = new SelectionManager(tree, selectionState);
+
   // Reset focused key if that item is deleted from the collection.
   useEffect(() => {
     if (selectionState.focusedKey != null && !tree.getItem(selectionState.focusedKey)) {
@@ -62,6 +64,11 @@ export function useTreeState<T extends object>(props: TreeProps<T>): TreeState<T
   }, [tree, selectionState.focusedKey]);
 
   let onToggle = (key: Key) => {
+    if (selectionManager.selectionMode === 'single') {
+      setExpandedKeys(replaceKey(key));
+      return;
+    }
+
     setExpandedKeys(toggleKey(expandedKeys, key));
   };
 
@@ -70,7 +77,7 @@ export function useTreeState<T extends object>(props: TreeProps<T>): TreeState<T
     expandedKeys,
     disabledKeys,
     toggleKey: onToggle,
-    selectionManager: new SelectionManager(tree, selectionState)
+    selectionManager
   };
 }
 
@@ -81,6 +88,13 @@ function toggleKey(set: Set<Key>, key: Key): Set<Key> {
   } else {
     res.add(key);
   }
+
+  return res;
+}
+
+function replaceKey(key: Key): Set<Key> {
+  let res = new Set<Key>();
+  res.add(key);
 
   return res;
 }
